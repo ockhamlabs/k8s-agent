@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	namespace      = "castai"
+	namespace      = "helios"
 	subsystem      = "agent"
 	labelType      = "type"
 	labelEventType = "event_type"
