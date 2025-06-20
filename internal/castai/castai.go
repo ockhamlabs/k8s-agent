@@ -33,28 +33,28 @@ const (
 	headerContentEncoding = "Content-Encoding"
 	headerUserAgent       = "User-Agent"
 
-	respHeaderRequestID = "X-Castai-Request-Id"
+	respHeaderRequestID = "X-Helios-Request-Id"
 )
 
 var (
 	ErrInvalidContinuityToken = errors.New("invalid continuity token")
 )
 
-// Client responsible for communication between the agent and CAST AI API.
+// Client responsible for communication between the agent and Helios API.
 type Client interface {
-	// RegisterCluster sends a request to CAST AI containing discovered cluster properties used to authenticate the
+	// RegisterCluster sends a request to Helios containing discovered cluster properties used to authenticate the
 	// cluster and register it.
 	RegisterCluster(ctx context.Context, req *RegisterClusterRequest) (*RegisterClusterResponse, error)
 	// ExchangeAgentTelemetry is used to send agent information (e.g. version)
-	// as well as poll CAST AI for agent configuration which can be updated via UI or other means.
+	// as well as poll Helios for agent configuration which can be updated via UI or other means.
 	ExchangeAgentTelemetry(ctx context.Context, clusterID string, req *AgentTelemetryRequest) (*AgentTelemetryResponse, error)
-	// SendDelta sends the kubernetes state change to CAST AI. Function is noop when items are empty.
+	// SendDelta sends the kubernetes state change to Helios. Function is noop when items are empty.
 	SendDelta(ctx context.Context, clusterID string, delta *Delta) error
-	// SendLogEvent sends agent's log event to CAST AI.
+	// SendLogEvent sends agent's log event to Helios.
 	SendLogEvent(ctx context.Context, clusterID string, req *IngestAgentLogsRequest) (*IngestAgentLogsResponse, error)
 }
 
-// NewClient creates and configures the CAST AI client.
+// NewClient creates and configures the Helios client.
 func NewClient(log logrus.FieldLogger, rest *resty.Client, deltaHTTPClient *http.Client) Client {
 	return &client{
 		log:             log,
