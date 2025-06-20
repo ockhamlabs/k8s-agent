@@ -80,7 +80,7 @@ func NewDefaultRestyClient() (*resty.Client, error) {
 	restyClient.SetBaseURL(cfg.URL)
 	restyClient.SetRetryCount(defaultRetryCount)
 	restyClient.Header.Set(headerAPIKey, cfg.Key)
-	restyClient.Header.Set(headerUserAgent, fmt.Sprintf("castai-agent/%s", config.VersionInfo.Version))
+	restyClient.Header.Set(headerUserAgent, fmt.Sprintf("helios-agent/%s", config.VersionInfo.Version))
 	if host := cfg.HostHeaderOverride; host != "" {
 		restyClient.Header.Set("Host", host)
 	}
@@ -335,7 +335,7 @@ func addUA(header http.Header) {
 	if vi := config.VersionInfo; vi != nil {
 		version = vi.Version
 	}
-	header.Set(headerUserAgent, fmt.Sprintf("castai-agent/%s", version))
+	header.Set(headerUserAgent, fmt.Sprintf("helios-agent/%s", version))
 }
 
 func readAllString(r io.Reader) (string, error) {

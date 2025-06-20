@@ -1,14 +1,14 @@
-# CAST AI Kubernetes Agent
+# Helios Kubernetes Agent
 
-A component that connects your Kubernetes cluster to the [CAST AI](https://www.cast.ai) platform to enable Kubernetes automation and cost optimization features.
+A component that connects your Kubernetes cluster to the Helios platform to enable Kubernetes automation and cost optimization features.
 
 ## Getting started
 
-Visit the [docs](https://docs.cast.ai/docs/getting-started) to connect your cluster.
+Visit the [docs](https://docs.helios.example.com/getting-started) to connect your cluster.
 
 ## Helm chart
 
-The helm chart for the CAST AI Kubernetes agent is published in the [castai/helm-charts](https://github.com/castai/helm-charts) repo.
+The helm chart for the Helios Kubernetes agent is published in the [helios/helm-charts](https://github.com/helios/helm-charts) repo.
 
 
 ## Reading configuration from file
@@ -19,19 +19,19 @@ Example file
 ```yaml
 api:
   key: "api key"
-  url: "api.cast.ai"
+  url: "api.helios.example.com"
 ```
 or
 
 ```yaml
 api.key: "api key"
-api.url: "api.cast.ai"
+api.url: "api.helios.example.com"
 ```
 
 Shell example
 
-```shell 
-CONFIG_PATH=<PATH_TO_CONFIG> ./castai-agent
+```shell
+CONFIG_PATH=<PATH_TO_CONFIG> ./helios-agent
 ```
 
 ## Contributing
@@ -41,8 +41,8 @@ CONFIG_PATH=<PATH_TO_CONFIG> ./castai-agent
 You must provide the these environment variables:
 
 ```text
-API_KEY=your-castai-api-key
-API_URL=api.cast.ai
+HELIOS_API_KEY=your-helios-api-key
+HELIOS_API_URL=api.helios.example.com
 KUBECONFIG=/path/to/kubeconfig
 ```
 
@@ -83,7 +83,7 @@ GKE_LOCATION=your-cluster-location
 ```
 note, when using zonal `GKE_REGION` and `GKE_LOCATION` is often the same, i.e. `europe-west3-a`
 
-If you want to test changes with existing cluster already onboarded to CAST AI console, you can set environment variable 
+If you want to test changes with an existing cluster already onboarded to the Helios console, you can set the environment variable
 
 ```text
 STATIC_CLUSTER_ID=your-cluster-id
@@ -102,23 +102,23 @@ import (
 
 * Prepare a repository to work with your cluster, e.g. Google Artifact Repository if working with a GKE cluster
 * Create and push agent image with `TAG=path/to/repository/k8s-agent:1.1-your-test-tag make build`. This will build the multi-architecture agent docker image and push it to the repository of your choice. `TAG` in this case should refer to the full image path and will be used for `docker push` command as-is. Increment the version when building more test versions.
-* Clone [castai/helm-charts](https://github.com/castai/helm-charts) repo;
+* Clone [helios/helm-charts](https://github.com/helios/helm-charts) repo;
 * Add necessary changes to the chart (if needed)
 * Clone values.yaml and tweak these chart values:
   * `image.repository`: for image build above, set this to `path/to/repository/k8s-agent`
   * `image.tag`: for above example, this would be `1.1-your-test-tag`
   * `clusterVPA.enabled`: turn off for testing setups
-  * `apiURL`: override if using non-production CAST AI environment (CAST AI developers only)
+  * `apiURL`: override if using a non-production Helios environment
   * `apiKey`: API key to use for the agent
 * Deploy the chart:
   ```
-  helm template castai-agent . -n castai-agent -f values.ignore.yaml | kubectl apply -f -
+  helm template helios-agent . -n helios-agent -f values.ignore.yaml | kubectl apply -f -
   ```
   
 
 ### Release procedure (with automatic release notes)
 
-Head to the [GitHub new release page](https://github.com/castai/k8s-agent/releases/new), create a new tag at the top, and click `Generate Release Notes` at the middle-right.
+Head to the [GitHub new release page](https://github.com/helios/k8s-agent/releases/new), create a new tag at the top, and click `Generate Release Notes` at the middle-right.
 ![image](https://user-images.githubusercontent.com/571022/174777789-2d7d646d-714d-42da-8c66-a6ed407b4440.png)
 
 

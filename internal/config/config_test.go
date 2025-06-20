@@ -9,7 +9,7 @@ import (
 
 func TestConfig(t *testing.T) {
 	require.NoError(t, os.Setenv("API_KEY", "abc"))
-	require.NoError(t, os.Setenv("API_URL", "api.cast.ai"))
+	require.NoError(t, os.Setenv("API_URL", "api.helios.example.com"))
 
 	require.NoError(t, os.Setenv("KUBECONFIG", "~/.kube/config"))
 
@@ -26,7 +26,7 @@ func TestConfig(t *testing.T) {
 	require.Equal(t, cfg.LeaderElection.LockName, "agent-leader-election-lock")
 	require.Equal(t, cfg.LeaderElection.Namespace, "castai-agent")
 	require.Equal(t, "abc", cfg.API.Key)
-	require.Equal(t, "https://api.cast.ai", cfg.API.URL)
+	require.Equal(t, "https://api.helios.example.com", cfg.API.URL)
 	require.Equal(t, 6060, cfg.PprofPort)
 	require.Equal(t, "~/.kube/config", cfg.Kubeconfig)
 

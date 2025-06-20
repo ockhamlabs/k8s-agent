@@ -176,7 +176,7 @@ func TestProvider_IsSpot(t *testing.T) {
 		node := &v1.Node{
 			ObjectMeta: metav1.ObjectMeta{
 				Labels: map[string]string{
-					labels.CastaiSpot: "true",
+					labels.HeliosSpot: "true",
 				},
 			},
 		}

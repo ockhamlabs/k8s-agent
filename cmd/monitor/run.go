@@ -17,10 +17,10 @@ import (
 func run(ctx context.Context) error {
 	cfg := config.Get()
 	if cfg.API.Key == "" {
-		return errors.New("env variable \"API_KEY\" is required")
+		return errors.New("env variable \"HELIOS_API_KEY\" is required")
 	}
 	if cfg.API.URL == "" {
-		return errors.New("env variable \"API_URL\" is required")
+		return errors.New("env variable \"HELIOS_API_URL\" is required")
 	}
 
 	remoteLogger := logrus.New()

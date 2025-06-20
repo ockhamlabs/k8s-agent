@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	castAnnotationSuffix = "cast.ai"
+	castAnnotationSuffix = "helios"
 )
 
 var (

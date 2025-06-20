@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	AutoscalerController = "autoscaler.cast.ai"
+	AutoscalerController = "autoscaler.helios"
 	fieldSelector        = "reportingComponent=" + AutoscalerController
 )
 

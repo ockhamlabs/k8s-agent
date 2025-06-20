@@ -17,7 +17,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:               "castai-agent",
+	Use:               "helios-agent",
 	PersistentPreRunE: preRun,
 }
 
