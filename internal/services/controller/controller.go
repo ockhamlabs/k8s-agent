@@ -623,7 +623,7 @@ func (c *Controller) prepareNodesForSend(ctx context.Context, cache map[string]*
 		}
 
 		for _, spot := range spots {
-			nodesByName[spot.Name].Labels[labels.CastaiFakeSpot] = "true"
+			nodesByName[spot.Name].Labels[labels.HeliosFakeSpot] = "true"
 		}
 	}
 }

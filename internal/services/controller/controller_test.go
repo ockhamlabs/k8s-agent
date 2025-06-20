@@ -549,7 +549,7 @@ func loadInitialHappyPathData(t *testing.T, scheme *runtime.Scheme) ([]sampleObj
 		},
 	}
 	expectedNode := node.DeepCopy()
-	expectedNode.Labels[labels.CastaiFakeSpot] = "true"
+	expectedNode.Labels[labels.HeliosFakeSpot] = "true"
 	nodeData := asJson(t, expectedNode)
 
 	pod := &v1.Pod{
@@ -660,7 +660,7 @@ func loadInitialHappyPathData(t *testing.T, scheme *runtime.Scheme) ([]sampleObj
 	nodePoolsDataV1 := emptyObjectData("karpenter.sh", "v1", "NodePool", "fake-nodepool-v1")
 	nodeClaimsDataV1 := emptyObjectData("karpenter.sh", "v1", "NodeClaim", "fake-nodeclaim-v1")
 	ec2NodeClassesDataV1 := emptyObjectData("karpenter.k8s.aws", "v1", "EC2NodeClass", "fake-ec2nodeclass-v1")
-	recommendationSyncV1Alpha1 := emptyObjectData("runbooks.cast.ai", "v1alpha1", "RecommendationSync", "fake-recommendationsync")
+	recommendationSyncV1Alpha1 := emptyObjectData("runbooks.helios", "v1alpha1", "RecommendationSync", "fake-recommendationsync")
 
 	datadogExtendedDSReplicaSet := &datadoghqv1alpha1.ExtendedDaemonSetReplicaSet{
 		TypeMeta: metav1.TypeMeta{
@@ -1090,10 +1090,10 @@ func loadInitialHappyPathData(t *testing.T, scheme *runtime.Scheme) ([]sampleObj
 			},
 		},
 		{
-			GroupVersion: "runbooks.cast.ai/v1alpha1",
+			GroupVersion: "runbooks.helios/v1alpha1",
 			APIResources: []metav1.APIResource{
 				{
-					Group:   "runbooks.cast.ai",
+					Group:   "runbooks.helios",
 					Name:    "recommendationsyncs",
 					Version: "v1alpha1",
 					Kind:    "RecommendationSync",

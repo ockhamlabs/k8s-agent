@@ -7,7 +7,7 @@ import (
 )
 
 // SchemaGroupVersion is the group version used to register these objects
-var SchemaGroupVersion = schema.GroupVersion{Group: "autoscaling.cast.ai", Version: "v1"}
+var SchemaGroupVersion = schema.GroupVersion{Group: "autoscaling.helios", Version: "v1"}
 
 // RecommendationGVR is group version resource for recommendation objects
 var RecommendationGVR = SchemaGroupVersion.WithResource("recommendations")

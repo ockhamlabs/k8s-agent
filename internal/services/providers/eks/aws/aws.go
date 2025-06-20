@@ -142,11 +142,11 @@ func determineLifecycle(n *v1.Node) nodeLifecycle {
 		}
 	}
 
-	if val, ok := n.Labels[labels.CastaiSpotFallback]; ok && val == "true" {
+	if val, ok := n.Labels[labels.HeliosSpotFallback]; ok && val == "true" {
 		return NodeLifecycleOnDemand
 	}
 
-	if val, ok := n.Labels[labels.CastaiSpot]; ok && val == "true" {
+	if val, ok := n.Labels[labels.HeliosSpot]; ok && val == "true" {
 		return NodeLifecycleSpot
 	}
 

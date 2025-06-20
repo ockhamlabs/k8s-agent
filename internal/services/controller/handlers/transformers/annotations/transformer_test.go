@@ -46,41 +46,41 @@ func Test_Transform(t *testing.T) {
 				Annotations: map[string]string{
 					"foo.bar/baz": "qux",
 					"foo.bar/qux": "baz",
-					"cast.ai/foo": "bar",
+					"helios/foo":  "bar",
 				},
 			}},
 			expected: &v1.Pod{ObjectMeta: metav1.ObjectMeta{
 				Name: "foo",
 				Annotations: map[string]string{
-					"cast.ai/foo": "bar",
+					"helios/foo": "bar",
 				},
 			}},
 		},
-		"should not remove annotation when prefix is specified but it is cast.ai annotation": {
-			prefixes: []string{"workload.cast.ai"},
+		"should not remove annotation when prefix is specified but it is helios annotation": {
+			prefixes: []string{"workload.helios"},
 			maxLen:   "",
 			input: &v1.Pod{ObjectMeta: metav1.ObjectMeta{
 				Annotations: map[string]string{
-					"workload.cast.ai/foo": "qux",
+					"workload.helios/foo": "qux",
 				},
 			}},
 			expected: &v1.Pod{ObjectMeta: metav1.ObjectMeta{
 				Annotations: map[string]string{
-					"workload.cast.ai/foo": "qux",
+					"workload.helios/foo": "qux",
 				},
 			}},
 		},
-		"should not strip annotation when length of value is over the limit but it is cast.ai annotation": {
-			prefixes: []string{"workload.cast.ai"},
+		"should not strip annotation when length of value is over the limit but it is helios annotation": {
+			prefixes: []string{"workload.helios"},
 			maxLen:   "2",
 			input: &v1.Pod{ObjectMeta: metav1.ObjectMeta{
 				Annotations: map[string]string{
-					"workload.cast.ai/foo": "qux",
+					"workload.helios/foo": "qux",
 				},
 			}},
 			expected: &v1.Pod{ObjectMeta: metav1.ObjectMeta{
 				Annotations: map[string]string{
-					"workload.cast.ai/foo": "qux",
+					"workload.helios/foo": "qux",
 				},
 			}},
 		},

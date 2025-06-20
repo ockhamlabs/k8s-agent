@@ -174,6 +174,13 @@ func Get() Config {
 		return *cfg
 	}
 
+	if val := os.Getenv("HELIOS_API_KEY"); val != "" && os.Getenv("API_KEY") == "" {
+		_ = os.Setenv("API_KEY", val)
+	}
+	if val := os.Getenv("HELIOS_API_URL"); val != "" && os.Getenv("API_URL") == "" {
+		_ = os.Setenv("API_URL", val)
+	}
+
 	viper.SetDefault("api.timeout", 10*time.Second)
 	viper.SetDefault("api.delta_read_timeout", 2*time.Minute)
 	viper.SetDefault("api.total_send_delta_timeout", 5*time.Minute)
@@ -191,11 +198,11 @@ func Get() Config {
 	viper.SetDefault("metrics_port", 9877)
 	viper.SetDefault("leader_election.enabled", true)
 	viper.SetDefault("leader_election.lock_name", "agent-leader-election-lock")
-	viper.SetDefault("leader_election.namespace", "castai-agent")
+	viper.SetDefault("leader_election.namespace", "helios-agent")
 
 	viper.SetDefault("metadata_store.enabled", false)
-	viper.SetDefault("metadata_store.config_map_name", "castai-agent-metadata")
-	viper.SetDefault("metadata_store.config_map_namespace", "castai-agent")
+	viper.SetDefault("metadata_store.config_map_name", "helios-agent-metadata")
+	viper.SetDefault("metadata_store.config_map_namespace", "helios-agent")
 
 	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))

@@ -100,7 +100,7 @@ func failedAutodiscovery(err error, envVar string) error {
 }
 
 func isSpot(node *corev1.Node) bool {
-	if val, ok := node.Labels[labels.CastaiSpot]; ok && val == "true" {
+	if val, ok := node.Labels[labels.HeliosSpot]; ok && val == "true" {
 		return true
 	}
 

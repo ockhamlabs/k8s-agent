@@ -85,8 +85,8 @@ func TestProvider_IsSpot(t *testing.T) {
 		expected bool
 	}{
 		{
-			name:     "castai spot node",
-			node:     &v1.Node{ObjectMeta: metav1.ObjectMeta{Labels: map[string]string{labels.CastaiSpot: "true"}}},
+			name:     "helios spot node",
+			node:     &v1.Node{ObjectMeta: metav1.ObjectMeta{Labels: map[string]string{labels.HeliosSpot: "true"}}},
 			expected: true,
 		},
 		{

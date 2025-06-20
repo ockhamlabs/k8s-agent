@@ -127,7 +127,7 @@ func TestProvider_IsSpot(t *testing.T) {
 		}
 
 		node := &v1.Node{ObjectMeta: metav1.ObjectMeta{Labels: map[string]string{
-			labels.CastaiSpot: "true",
+			labels.HeliosSpot: "true",
 		}}}
 
 		got, err := p.FilterSpot(context.Background(), []*v1.Node{node})
@@ -213,10 +213,10 @@ func TestProvider_IsSpot(t *testing.T) {
 		}
 
 		nodeCastaiSpot := &v1.Node{ObjectMeta: metav1.ObjectMeta{Labels: map[string]string{
-			labels.CastaiSpot: "true",
+			labels.HeliosSpot: "true",
 		}}}
 		nodeCastaiSpotFallback := &v1.Node{ObjectMeta: metav1.ObjectMeta{Labels: map[string]string{
-			labels.CastaiSpotFallback: "true",
+			labels.HeliosSpotFallback: "true",
 		}}}
 
 		nodeKarpenterSpot := &v1.Node{ObjectMeta: metav1.ObjectMeta{Labels: map[string]string{
