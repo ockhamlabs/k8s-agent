@@ -24,7 +24,7 @@ func TestConfig(t *testing.T) {
 
 	require.Equal(t, cfg.HealthzPort, 9876)
 	require.Equal(t, cfg.LeaderElection.LockName, "agent-leader-election-lock")
-	require.Equal(t, cfg.LeaderElection.Namespace, "castai-agent")
+	require.Equal(t, cfg.LeaderElection.Namespace, "helios-agent")
 	require.Equal(t, "abc", cfg.API.Key)
 	require.Equal(t, "https://api.helios.example.com", cfg.API.URL)
 	require.Equal(t, 6060, cfg.PprofPort)
