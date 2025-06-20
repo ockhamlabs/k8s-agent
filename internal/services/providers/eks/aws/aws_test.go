@@ -115,7 +115,7 @@ func TestProvider_IsSpot(t *testing.T) {
 		r.Equal([]*v1.Node{node}, got)
 	})
 
-	t.Run("spot instance CAST AI label", func(t *testing.T) {
+	t.Run("spot instance Helios label", func(t *testing.T) {
 		r := require.New(t)
 		awsClient := mock_aws.NewMockClient(gomock.NewController(t))
 
